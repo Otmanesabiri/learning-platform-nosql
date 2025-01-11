@@ -1,9 +1,7 @@
 # Projet de fin de module NoSQL (correction)
 
 // Question : Pourquoi créer un module séparé pour les connexions aux bases de données ?
-// Réponse :
-Créer un module séparé pour les connexions aux bases de données permet de :
-
+Réponse : Créer un module séparé pour les connexions aux bases de données permet de :
 Centraliser la logique de connexion à un seul endroit
 Réutiliser facilement les connexions dans différentes parties de l'application
 Gérer proprement les options de connexion et la gestion d'erreurs
@@ -11,9 +9,7 @@ Faciliter les tests en permettant de mocker les connexions
 Assurer une meilleure maintenabilité du code
 
 // Question : Comment gérer proprement la fermeture des connexions ?
-// Réponse :
-La gestion propre des connexions implique :
-
+Réponse : La gestion propre des connexions implique :
 Implémenter des gestionnaires d'événements pour intercepter les signaux de fermeture (SIGTERM, SIGINT)
 Fermer les connexions dans l'ordre inverse de leur ouverture
 Attendre que toutes les requêtes en cours soient terminées avant de fermer
@@ -129,3 +125,7 @@ Une gestion robuste des erreurs de démarrage
 Des logs détaillés pour suivre le processus
 Une vérification de l'état de santé des dépendances
 Un mécanisme de retry pour les connexions importantes
+
+![image](https://github.com/user-attachments/assets/15febfa8-280f-44d0-9ee9-84a41d7de3df)
+
+
