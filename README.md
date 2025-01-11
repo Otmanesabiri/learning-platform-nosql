@@ -1,4 +1,4 @@
-# Projet de fin de module NoSQL
+# Projet de fin de module NoSQL (correction)
 
 // Question : Pourquoi créer un module séparé pour les connexions aux bases de données ?
 // Réponse :
