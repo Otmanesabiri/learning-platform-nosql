@@ -129,3 +129,6 @@ Une gestion robuste des erreurs de démarrage
 Des logs détaillés pour suivre le processus
 Une vérification de l'état de santé des dépendances
 Un mécanisme de retry pour les connexions importantes
+
+
+![alt text](image-1.png)
