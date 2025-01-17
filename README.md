@@ -204,3 +204,6 @@ nodemon app.js
 - Logs détaillés du processus
 - Vérification de l'état des dépendances
 - Mécanisme de retry pour les connexions importantes
+
+
+![image](https://github.com/user-attachments/assets/dfcb2248-0e86-492b-92db-0c27541ecdd7)
