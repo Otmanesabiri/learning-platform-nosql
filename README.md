@@ -90,7 +90,7 @@ PORT=3000
 
 4. Démarrer l'application :
 ```bash
-npm start
+nodemon app.js
 ```
 
 ## Points d'Entrée de l'API
