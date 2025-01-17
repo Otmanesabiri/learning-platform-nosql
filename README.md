@@ -1,9 +1,114 @@
-# Projet de fin de module NoSQL (correction)
 
+# API de la Plateforme d'Apprentissage
+
+Une API REST backend basée sur Node.js pour une plateforme d'apprentissage en ligne, construite avec Express.js et utilisant MongoDB et Redis pour une gestion efficace des données et de la mise en cache.
+
+## Structure du Projet
+
+```
+learning-platform-nosql/
+├── config/
+│   ├── db.js         # Gestion des connexions à la base de données
+│   └── env.js        # Configuration de l'environnement
+├── controllers/
+│   ├── courseController.js
+│   └── studentController.js
+├── routes/
+│   ├── courseRoutes.js
+│   └── studentRoutes.js
+├── services/
+│   ├── mongoService.js
+│   └── redisService.js
+└── app.js            # Fichier principal de l'application
+```
+
+## Choix Techniques et Décisions d'Architecture
+
+### 1. Architecture de la Base de Données
+
+Le projet utilise une approche à double base de données :
+- **MongoDB** : Base de données principale pour stocker les données des cours et des étudiants
+- **Redis** : Couche de cache pour les données fréquemment accédées
+
+Cette architecture a été choisie car :
+- MongoDB offre une conception de schéma flexible pour le contenu éducatif
+- Le cache Redis réduit la charge de la base de données et améliore les temps de réponse
+- La combinaison supporte une haute scalabilité et performance
+
+### 2. Organisation du Code
+
+Le projet suit un modèle d'architecture propre avec une séparation claire des responsabilités :
+- **Routes** : Définissent les points d'entrée de l'API et la gestion des routes
+- **Contrôleurs** : Gèrent la logique des requêtes/réponses
+- **Services** : Contiennent la logique métier principale et les opérations de base de données
+
+Avantages de cette structure :
+- Meilleure maintenabilité et testabilité
+- Flux de dépendances clair
+- Plus facile à étendre et modifier les fonctionnalités
+
+### 3. Configuration de l'Environnement
+
+L'application utilise des variables d'environnement pour la configuration, gérées via `dotenv` :
+- Chaînes de connexion aux bases de données
+- Paramètres de port
+- Secrets de l'application
+
+Cette approche :
+- Maintient les informations sensibles sécurisées
+- Facilite le déploiement dans différents environnements
+- Suit les principes des applications 12-facteurs
+
+### 4. Gestion des Erreurs et Journalisation
+
+L'application implémente :
+- Middleware centralisé de gestion des erreurs
+- Journalisation des requêtes
+- Gestion propre de l'arrêt
+- Propagation appropriée des erreurs à travers les couches
+
+## Installation et Configuration
+
+1. Cloner le dépôt :
+```bash
+git clone https://github.com/Otmanesabiri/learning-platform-nosql
+cd learning-platform-nosql
+```
+
+2. Installer les dépendances :
+```bash
+npm install
+```
+
+3. Créer un fichier `.env` dans le répertoire racine avec les variables suivantes :
+```
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.6lgat.mongodb.net/
+MONGODB_DB_NAME=learning_platform
+REDIS_URI=redis://default:<password>@redis-18396.c228.us-central1-1.gce.redns.redis-cloud.com:18396
+PORT=3000
+```
+
+4. Démarrer l'application :
+```bash
+npm start
+```
+
+## Points d'Entrée de l'API
+
+### Cours
+- `POST /api/courses` - Créer un nouveau cours
+- `GET /api/courses/:id` - Obtenir les détails d'un cours
+- `GET /api/courses/stats` - Obtenir les statistiques des cours
+
+### Étudiants
+- `POST /api/students` - Créer un nouvel étudiant
+- `GET /api/students/:id` - Obtenir les détails d'un étudiant
+- `GET /api/students/:id/courses` - Obtenir les cours auxquels un étudiant est inscrit
+
+
+# Projet de fin de module NoSQL (Réponse sur les questions)
 // Question : Pourquoi créer un module séparé pour les connexions aux bases de données ?
-// Réponse :
-Créer un module séparé pour les connexions aux bases de données permet de :
-
+Réponse : Créer un module séparé pour les connexions aux bases de données permet de :
 Centraliser la logique de connexion à un seul endroit
 Réutiliser facilement les connexions dans différentes parties de l'application
 Gérer proprement les options de connexion et la gestion d'erreurs
@@ -11,9 +116,7 @@ Faciliter les tests en permettant de mocker les connexions
 Assurer une meilleure maintenabilité du code
 
 // Question : Comment gérer proprement la fermeture des connexions ?
-// Réponse :
-La gestion propre des connexions implique :
-
+Réponse : La gestion propre des connexions implique :
 Implémenter des gestionnaires d'événements pour intercepter les signaux de fermeture (SIGTERM, SIGINT)
 Fermer les connexions dans l'ordre inverse de leur ouverture
 Attendre que toutes les requêtes en cours soient terminées avant de fermer
@@ -112,8 +215,7 @@ Documenter la structure des clés utilisées
 
 // Question: Comment organiser le point d'entrée de l'application ?
 // Réponse :
-Le point d'entrée doit :
-
+Le point d'entrée doit: 
 Initialiser les composants dans le bon ordre
 Valider la configuration au démarrage
 Mettre en place la gestion d'erreurs globale
@@ -129,6 +231,3 @@ Une gestion robuste des erreurs de démarrage
 Des logs détaillés pour suivre le processus
 Une vérification de l'état de santé des dépendances
 Un mécanisme de retry pour les connexions importantes
-
-
-![alt text](image-1.png)
