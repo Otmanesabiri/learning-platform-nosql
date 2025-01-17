@@ -205,5 +205,7 @@ nodemon app.js
 - Vérification de l'état des dépendances
 - Mécanisme de retry pour les connexions importantes
 
+démarage de serveur après exécution: 
+![image](https://github.com/user-attachments/assets/a56edc59-071e-4c3a-ba83-54e31f8ede78)
 
-![image](https://github.com/user-attachments/assets/dfcb2248-0e86-492b-92db-0c27541ecdd7)
+
